@@ -58,8 +58,8 @@ Vagrant.configure("2") do |config|
 
     maas.vm.provider :libvirt do |domain|
       domain.default_prefix = ""
-      domain.cpus = "1"
-      domain.memory = "6144"
+      domain.cpus = "2"
+      domain.memory = "8192"
     end
 
     maas.vm.network "private_network", ip: MAAS_IP,
