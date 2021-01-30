@@ -26,7 +26,7 @@ OAM_RESERVED_RANGE_START = OAM_NETWORK_PREFIX + "1"
 OAM_RESERVED_RANGE_END   = OAM_NETWORK_PREFIX + "9"
 
 # Total number of Cloud Nodes
-CLOUD_NODES_COUNT = 6
+CLOUD_NODES_COUNT = 7
 
 # CPU and RAM configuration for Cloud Nodes
 # Adjust the values that would fit into your host's capacity. Note that if you 
