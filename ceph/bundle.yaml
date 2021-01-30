@@ -1,4 +1,4 @@
-series: bionic
+series: focal
 variables:
   osd-devices: &osd-devices /dev/vdb
   customize-failure-domain: &customize-failure-domain True
