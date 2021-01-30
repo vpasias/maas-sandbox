@@ -70,11 +70,11 @@ Now you can bootstrap a Juju Controller on one of the Cloud Nodes (typically
 ## Deploy OpenStack with Juju
 
 For OpenStack deployment, I have chosen OpenStack Stein on Ubuntu Bionic
-[openstack-base #61](https://jaas.ai/openstack-base-61) bundle from the official 
+[openstack-base](https://jaas.ai/openstack-base) bundle from the official 
 Juju charm store.
 
     # Download the bundle
-    (maas)$ charm pull openstack-base-61 ~/openstack-base
+    (maas)$ charm pull openstack-base ~/openstack-base
 
     # Customize bundle to fit the architecture
     (maas)$ sed -i 's/eno2/ens7/g' openstack-base/bundle.yaml
