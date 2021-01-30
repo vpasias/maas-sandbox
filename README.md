@@ -77,7 +77,7 @@ Juju charm store.
     (maas)$ charm pull openstack-base ~/openstack-base
 
     # Customize bundle to fit the architecture
-    (maas)$ sed -i 's/eno2/ens7/g' openstack-base/bundle.yaml
+    (maas)$ sed -i 's/eno2/ens6/g' openstack-base/bundle.yaml
     (maas)$ sed -i 's/\/dev\/sdb //g' openstack-base/bundle.yaml
 
     # Deploy OpenStack bundle
