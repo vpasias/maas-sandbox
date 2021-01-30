@@ -69,7 +69,7 @@ Now you can bootstrap a Juju Controller on one of the Cloud Nodes (typically
         
 ## Deploy OpenStack with Juju
 
-For OpenStack deployment, I have chosen OpenStack Stein on Ubuntu Bionic
+For OpenStack deployment, I have chosen OpenStack Ussuri on Ubuntu Focal
 [openstack-base](https://jaas.ai/openstack-base) bundle from the official 
 Juju charm store.
 
