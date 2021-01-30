@@ -1,6 +1,6 @@
 series: focal
 variables:
-  osd-devices: &osd-devices /dev/vdb
+  osd-devices: &osd-devices /dev/sdb
   customize-failure-domain: &customize-failure-domain True
   expected-osd-count: &expected-osd-count 3
   expected-mon-count: &expected-mon-count 3
