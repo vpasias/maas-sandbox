@@ -33,7 +33,7 @@ CLOUD_NODES_COUNT = 6
 # want to deploy e.g. OpenStack on MAAS, and then spin up VMs on OpenStack, you 
 # need to significantly bump up RAM and CPUs for Cloud Nodes.
 CLOUD_NODE_CPUS   = 8  # vCPUs per Cloud Node
-CLOUD_NODE_MEMORY = 32768  # 16GB plus
+CLOUD_NODE_MEMORY = 32768  # 32GB
 
 # Local image mirror (See https://maas.io/docs/local-image-mirror)
 LOCAL_IMAGE_MIRROR_URL = ""
