@@ -17,10 +17,9 @@ set -xe
 echo "Initializing MAAS..."
 if ! (maas apikey --username root > /dev/null 2>&1)
 then
-    maas init region+rack --maas-url http://localhost:5240/MAAS --database-uri maas-test-db:/// \
-        --admin-username root \
-        --admin-password root \
-        --admin-email root@localhost.localdomain
+    maas init region+rack --maas-url http://localhost:5240/MAAS --database-uri maas-test-db:///
+    maas createadmin --admin-username root --admin-password root --admin-email root@localhost.localdomain
+    maas apikey --username root > ~root/admin-api-key
 else
     echo "MAAS already initialized, skipping"
 fi
