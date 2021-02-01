@@ -32,7 +32,7 @@ CLOUD_NODES_COUNT = 7
 # Adjust the values that would fit into your host's capacity. Note that if you 
 # want to deploy e.g. OpenStack on MAAS, and then spin up VMs on OpenStack, you 
 # need to significantly bump up RAM and CPUs for Cloud Nodes.
-CLOUD_NODE_CPUS   = 8  # vCPUs per Cloud Node
+CLOUD_NODE_CPUS   = 6  # vCPUs per Cloud Node
 CLOUD_NODE_MEMORY = 32768  # 32GB
 
 # Local image mirror (See https://maas.io/docs/local-image-mirror)
@@ -147,8 +147,8 @@ Vagrant.configure("2") do |config|
         domain.default_prefix = ""
         domain.cpus = CLOUD_NODE_CPUS
         domain.memory = CLOUD_NODE_MEMORY
-        domain.storage :file, :size => '100G', :bus => 'scsi'  # Operating System
-        domain.storage :file, :size => '16G', :bus => 'scsi'  # Data disk (e.g. for Ceph OSD)
+        domain.storage :file, :size => '120G', :bus => 'scsi'  # Operating System
+        domain.storage :file, :size => '20G', :bus => 'scsi'  # Data disk (e.g. for Ceph OSD)
         boot_network = {'network' => 'OAM'}
         domain.boot boot_network
         domain.autostart = false
