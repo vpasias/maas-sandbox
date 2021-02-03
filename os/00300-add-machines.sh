@@ -1,3 +1,4 @@
+#!/bin/bash
 juju add-machine node02
 juju add-machine node03
 juju add-machine node04
