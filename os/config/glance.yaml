@@ -1,0 +1,5 @@
+glance:
+  openstack-origin: cloud:focal-victoria
+  vip: 192.168.10.132
+glance-hacluster:
+  corosync_transport: unicast
