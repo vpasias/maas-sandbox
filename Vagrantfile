@@ -147,8 +147,8 @@ Vagrant.configure("2") do |config|
         domain.default_prefix = ""
         domain.cpus = CLOUD_NODE_CPUS
         domain.memory = CLOUD_NODE_MEMORY
-        domain.storage :file, :size => '120G', :bus => 'scsi'  # Operating System
-        domain.storage :file, :size => '40G', :bus => 'scsi'  # Data disk (e.g. for Ceph OSD)
+        domain.storage :file, :size => '100G', :bus => 'scsi'  # Operating System
+        domain.storage :file, :size => '20G', :bus => 'scsi'  # Data disk (e.g. for Ceph OSD)
         boot_network = {'network' => 'OAM'}
         domain.boot boot_network
         domain.autostart = false
