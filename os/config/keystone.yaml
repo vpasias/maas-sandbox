@@ -1,0 +1,6 @@
+keystone:
+  admin-password: password
+  openstack-origin: cloud:focal-victoria
+  vip: 192.168.10.131
+keystone-hacluster:
+  corosync_transport: unicast
