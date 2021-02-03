@@ -143,7 +143,7 @@ applications:
       nagiosadmin: admin
       password: password
   nagios-ntp:
-    charm: cs:ntp-39
+    charm: cs:ntp
     options:
       pools: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
   ncc-hacluster:
