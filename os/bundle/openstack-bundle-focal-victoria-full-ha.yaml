@@ -1,0 +1,413 @@
+series: focal
+applications:
+  ceph-mon:
+    charm: cs:ceph-mon
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      expected-osd-count: 3
+      monitor-count: 3
+      monitor-secret: AQACsMFeYPKUChAAIaA94CWemo92sLiCteCk3A==
+      source: cloud:focal-victoria
+  ceph-mon-backup:
+    charm: cs:ceph-mon
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      expected-osd-count: 3
+      monitor-count: 3
+      monitor-secret: AQAFsMFew+tBCRAAOW0wwXDlsgVi2IdtR4rjzw==
+      source: cloud:focal-victoria
+  ceph-osd:
+    charm: cs:ceph-osd
+    num_units: 3
+    to:
+    - "6"
+    - "7"
+    - "8"
+    options:
+      osd-devices: /dev/sdb
+      source: cloud:focal-victoria
+  ceph-osd-backup:
+    charm: cs:ceph-osd
+    num_units: 3
+    to:
+    - "9"
+    - "10"
+    - "11"
+    options:
+      osd-devices: /dev/sdb
+      source: cloud:focal-victoria
+  ceph-radosgw:
+    charm: cs:ceph-radosgw
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      namespace-tenants: true
+      source: cloud:focal-victoria
+      vip: 192.168.10.129
+  ceph-radosgw-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  cinder:
+    charm: cs:cinder
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      block-device: None
+      glance-api-version: 2
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.133
+  cinder-backup:
+    charm: cs:~openstack-charmers/cinder-backup
+  cinder-ceph:
+    charm: cs:cinder-ceph
+  cinder-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  glance:
+    charm: cs:glance
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.132
+  glance-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  keystone:
+    charm: cs:keystone
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      admin-password: password
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.131
+  keystone-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  memcached:
+    charm: cs:memcached
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+  mysql:
+    charm: cs:percona-cluster
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      innodb-buffer-pool-size: 512M
+      max-connections: 20000
+      min-cluster-size: 3
+      performance-schema: true
+      root-password: password
+      source: cloud:focal-victoria
+      vip: 192.168.10.130
+  mysql-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  nagios:
+    charm: cs:nagios
+    num_units: 1
+    to:
+    - "12"
+    options:
+      nagiosadmin: admin
+      password: password
+  nagios-ntp:
+    charm: cs:ntp-39
+    options:
+      pools: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
+  ncc-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  neutron-api:
+    charm: cs:neutron-api
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      default-tenant-network-type: vxlan
+      enable-l3ha: true
+      flat-network-providers: physnet1
+      max-l3-agents-per-router: 3
+      neutron-security-groups: true
+      openstack-origin: cloud:focal-victoria
+      overlay-network-type: vxlan
+      vip: 192.168.10.135
+  neutron-gateway:
+    charm: cs:neutron-gateway
+    num_units: 3
+    to:
+    - "0"
+    - "1"
+    - "2"
+    options:
+      bridge-mappings: physnet1:br-ex
+      data-port: br-ex:ens6
+      openstack-origin: cloud:focal-victoria
+  neutron-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  neutron-openvswitch:
+    charm: cs:neutron-openvswitch
+  nova-cloud-controller:
+    charm: cs:nova-cloud-controller
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      console-access-protocol: spice
+      console-keymap: en-us
+      console-proxy-ip: 192.168.10.134
+      network-manager: Neutron
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.134
+  nova-compute:
+    charm: cs:nova-compute
+    num_units: 3
+    to:
+    - "3"
+    - "4"
+    - "5"
+    options:
+      enable-live-migration: true
+      enable-resize: true
+      migration-auth-type: ssh
+      openstack-origin: cloud:focal-victoria
+  nrpe:
+    charm: cs:nrpe
+  ntp:
+    charm: cs:ntp
+    options:
+      pools: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
+  openstack-dashboard:
+    charm: cs:openstack-dashboard
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      cinder-backup: true
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.136
+      webroot: /
+  openstack-dashboard-hacluster:
+    charm: cs:hacluster
+    options:
+      corosync_transport: unicast
+  rabbitmq-server:
+    charm: cs:rabbitmq-server
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+machines:
+  "0": {}
+  "1": {}
+  "2": {}
+  "3": {}
+  "4": {}
+  "5": {}
+  "6": {}
+  "7": {}
+  "8": {}
+  "9": {}
+  "10": {}
+  "11": {}
+  "12": {}
+relations:
+- - ceph-mon:osd
+  - ceph-osd:mon
+- - ceph-mon-backup:osd
+  - ceph-osd-backup:mon
+- - mysql:ha
+  - mysql-hacluster:ha
+- - keystone:ha
+  - keystone-hacluster:ha
+- - keystone:shared-db
+  - mysql:shared-db
+- - ceph-radosgw:mon
+  - ceph-mon:radosgw
+- - ceph-radosgw:ha
+  - ceph-radosgw-hacluster:ha
+- - ceph-radosgw:identity-service
+  - keystone:identity-service
+- - glance:ha
+  - glance-hacluster:ha
+- - glance:shared-db
+  - mysql:shared-db
+- - glance:identity-service
+  - keystone:identity-service
+- - glance:amqp
+  - rabbitmq-server:amqp
+- - glance:ceph
+  - ceph-mon:client
+- - cinder:ha
+  - cinder-hacluster:ha
+- - cinder:shared-db
+  - mysql:shared-db
+- - cinder:identity-service
+  - keystone:identity-service
+- - cinder:amqp
+  - rabbitmq-server:amqp
+- - cinder:image-service
+  - glance:image-service
+- - cinder-ceph:storage-backend
+  - cinder:storage-backend
+- - cinder-ceph:ceph
+  - ceph-mon:client
+- - cinder-backup:backup-backend
+  - cinder:backup-backend
+- - cinder-backup:ceph
+  - ceph-mon-backup:client
+- - nova-cloud-controller:ha
+  - ncc-hacluster:ha
+- - nova-cloud-controller:shared-db
+  - mysql:shared-db
+- - nova-cloud-controller:identity-service
+  - keystone:identity-service
+- - nova-cloud-controller:amqp
+  - rabbitmq-server:amqp
+- - nova-cloud-controller:memcache
+  - memcached:cache
+- - nova-cloud-controller:image-service
+  - glance:image-service
+- - nova-cloud-controller:cinder-volume-service
+  - cinder:cinder-volume-service
+- - nova-compute:cloud-compute
+  - nova-cloud-controller:cloud-compute
+- - nova-compute:amqp
+  - rabbitmq-server:amqp
+- - nova-compute:image-service
+  - glance:image-service
+- - nova-compute:ceph
+  - ceph-mon:client
+- - neutron-api:ha
+  - neutron-hacluster:ha
+- - neutron-gateway:quantum-network-service
+  - nova-cloud-controller:quantum-network-service
+- - neutron-gateway:amqp
+  - rabbitmq-server:amqp
+- - neutron-api:shared-db
+  - mysql:shared-db
+- - neutron-api:identity-service
+  - keystone:identity-service
+- - neutron-api:amqp
+  - rabbitmq-server:amqp
+- - neutron-api:neutron-plugin-api
+  - neutron-gateway:neutron-plugin-api
+- - neutron-api:neutron-plugin-api
+  - neutron-openvswitch:neutron-plugin-api
+- - neutron-api:neutron-api
+  - nova-cloud-controller:neutron-api
+- - neutron-openvswitch:amqp
+  - rabbitmq-server:amqp
+- - neutron-openvswitch:neutron-plugin
+  - nova-compute:neutron-plugin
+- - openstack-dashboard:ha
+  - openstack-dashboard-hacluster:ha
+- - openstack-dashboard:shared-db
+  - mysql:shared-db
+- - openstack-dashboard:identity-service
+  - keystone:identity-service
+- - ntp:juju-info
+  - ceph-osd:juju-info
+- - ntp:juju-info
+  - ceph-osd-backup:juju-info
+- - ntp:juju-info
+  - nova-compute:juju-info
+- - ntp:juju-info
+  - neutron-gateway:juju-info
+- - nagios:juju-info
+  - nagios-ntp:juju-info
+- - nagios:monitors
+  - nrpe:monitors
+- - nrpe:nrpe-external-master
+  - ceph-mon:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ceph-mon-backup:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ceph-osd:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ceph-osd-backup:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ceph-radosgw:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ceph-radosgw-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - cinder:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - cinder-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - glance:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - glance-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - keystone:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - keystone-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - memcached:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - mysql:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - mysql-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ncc-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - neutron-api:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - neutron-gateway:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - neutron-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - nova-cloud-controller:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - nova-compute:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - ntp:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - openstack-dashboard:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - openstack-dashboard-hacluster:nrpe-external-master
+- - nrpe:nrpe-external-master
+  - rabbitmq-server:nrpe-external-master
+- - nova-compute:ceph-access
+  - cinder-ceph:ceph-access
