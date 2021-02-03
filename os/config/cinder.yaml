@@ -1,0 +1,7 @@
+cinder:
+  block-device: None
+  glance-api-version: 2
+  openstack-origin: cloud:focal-victoria
+  vip: 192.168.10.133
+cinder-hacluster:
+  corosync_transport: unicast
