@@ -1,0 +1,9 @@
+nova-cloud-controller:
+  console-access-protocol: spice
+  console-keymap: en-us
+  console-proxy-ip: 192.168.10.134
+  network-manager: Neutron
+  openstack-origin: cloud:focal-victoria
+  vip: 192.168.10.134
+ncc-hacluster:
+  corosync_transport: unicast
