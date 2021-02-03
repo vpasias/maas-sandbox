@@ -1,3 +1,4 @@
+#!/bin/bash
 # normal
 juju destroy-controller -y --destroy-all-models --destroy-storage maas-cloud-controller
 
