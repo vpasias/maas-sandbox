@@ -1,0 +1,6 @@
+ceph-radosgw:
+  source: cloud:focal-victoria
+  namespace-tenants: true
+  vip: 192.168.10.129
+ceph-radosgw-hacluster:
+  corosync_transport: unicast
