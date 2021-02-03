@@ -1,0 +1,7 @@
+openstack-dashboard:
+  cinder-backup: true
+  webroot: /
+  openstack-origin: cloud:focal-victoria
+  vip: 192.168.10.136
+openstack-dashboard-hacluster:
+  corosync_transport: unicast
