@@ -54,7 +54,7 @@ applications:
     options:
       namespace-tenants: true
       source: cloud:focal-victoria
-      vip: 192.168.10.129
+      vip: 192.168.10.229
   ceph-radosgw-hacluster:
     charm: cs:hacluster
     options:
@@ -70,7 +70,7 @@ applications:
       block-device: None
       glance-api-version: 2
       openstack-origin: cloud:focal-victoria
-      vip: 192.168.10.133
+      vip: 192.168.10.233
   cinder-backup:
     charm: cs:~openstack-charmers/cinder-backup
   cinder-ceph:
@@ -88,7 +88,7 @@ applications:
     - lxd:2
     options:
       openstack-origin: cloud:focal-victoria
-      vip: 192.168.10.132
+      vip: 192.168.10.232
   glance-hacluster:
     charm: cs:hacluster
     options:
@@ -103,7 +103,7 @@ applications:
     options:
       admin-password: password
       openstack-origin: cloud:focal-victoria
-      vip: 192.168.10.131
+      vip: 192.168.10.231
   keystone-hacluster:
     charm: cs:hacluster
     options:
@@ -128,8 +128,7 @@ applications:
       min-cluster-size: 3
       performance-schema: true
       root-password: password
-      source: cloud:focal-victoria
-      vip: 192.168.10.130
+      vip: 192.168.10.230
   mysql-hacluster:
     charm: cs:hacluster
     options:
@@ -165,7 +164,7 @@ applications:
       neutron-security-groups: true
       openstack-origin: cloud:focal-victoria
       overlay-network-type: vxlan
-      vip: 192.168.10.135
+      vip: 192.168.10.235
   neutron-gateway:
     charm: cs:neutron-gateway
     num_units: 3
@@ -193,10 +192,10 @@ applications:
     options:
       console-access-protocol: spice
       console-keymap: en-us
-      console-proxy-ip: 192.168.10.134
+      console-proxy-ip: 192.168.10.234
       network-manager: Neutron
       openstack-origin: cloud:focal-victoria
-      vip: 192.168.10.134
+      vip: 192.168.10.234
   nova-compute:
     charm: cs:nova-compute
     num_units: 3
@@ -225,7 +224,7 @@ applications:
     options:
       cinder-backup: true
       openstack-origin: cloud:focal-victoria
-      vip: 192.168.10.136
+      vip: 192.168.10.236
       webroot: /
   openstack-dashboard-hacluster:
     charm: cs:hacluster
