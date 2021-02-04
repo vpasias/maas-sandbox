@@ -10,6 +10,6 @@ neutron-api:
   neutron-security-groups: true
   openstack-origin: cloud:focal-victoria
   overlay-network-type: vxlan
-  vip: 192.168.10.135
+  vip: 192.168.10.235
 neutron-hacluster:
   corosync_transport: unicast
