@@ -4,7 +4,6 @@ mysql:
   innodb-buffer-pool-size: 512M
   performance-schema: true
   root-password: password
-  source: cloud:focal-victoria
   vip: 192.168.10.130
 mysql-hacluster:
   corosync_transport: unicast
