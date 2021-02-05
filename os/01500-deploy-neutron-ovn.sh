@@ -1,21 +1,21 @@
 #!/bin/bash
-juju deploy --config config/neutron-ovn.yaml -n 3 --to 0,1,2 cs:neutron-gateway neutron-gateway
+juju deploy --config config/neutron-ovn.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:ovn-central ovn-central
 juju deploy --config config/neutron-ovn.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:neutron-api neutron-api
-juju deploy cs:neutron-openvswitch neutron-openvswitch
+juju deploy --config config/neutron-ovn.yaml cs:ovn-chassis ovn-chassis
+juju deploy cs:neutron-api-plugin-ovn neutron-api-plugin-ovn
 #
 juju deploy --config config/neutron-ovn.yaml cs:hacluster neutron-hacluster
 juju add-relation neutron-api:ha neutron-hacluster:ha
 #
-juju add-relation neutron-gateway:quantum-network-service nova-cloud-controller:quantum-network-service
-juju add-relation neutron-gateway:amqp rabbitmq-server:amqp
+juju add-relation neutron-api-plugin-ovn:neutron-plugin neutron-api:neutron-plugin-api-subordinate
+juju add-relation neutron-api-plugin-ovn:ovsdb-cms ovn-central:ovsdb-cms
+juju add-relation ovn-chassis:ovsdb ovn-central:ovsdb
+juju add-relation ovn-chassis:nova-compute nova-compute:neutron-plugin
+juju add-relation neutron-api:certificates vault:certificates
+juju add-relation neutron-api-plugin-ovn:certificates vault:certificates
+juju add-relation ovn-central:certificates vault:certificates
+juju add-relation ovn-chassis:certificates vault:certificates
 #
-juju add-relation neutron-api:shared-db mysql:shared-db
-juju add-relation neutron-api:identity-service keystone:identity-service
-juju add-relation neutron-api:amqp rabbitmq-server:amqp
-#
-juju add-relation neutron-api:neutron-plugin-api neutron-gateway:neutron-plugin-api
-juju add-relation neutron-api:neutron-plugin-api neutron-openvswitch:neutron-plugin-api
-juju add-relation neutron-api:neutron-api nova-cloud-controller:neutron-api
-#
-juju add-relation neutron-openvswitch:amqp rabbitmq-server:amqp
-juju add-relation neutron-openvswitch:neutron-plugin nova-compute:neutron-plugin
+juju deploy mysql-router neutron-api-mysql-router
+juju add-relation neutron-api-mysql-router:db-router mysql-innodb-cluster:db-router
+juju add-relation neutron-api-mysql-router:shared-db neutron-api:shared-db
