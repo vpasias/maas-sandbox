@@ -1,3 +1,4 @@
+# https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/latest/app-ha.html
 sudo snap install vault
 export VAULT_ADDR="http://192.168.10.??:8200"
 vault operator init -key-shares=5 -key-threshold=3
@@ -10,5 +11,5 @@ vault operator unseal KEY-3
 vault token create -ttl=10m
 juju run-action --wait vault/leader authorize-charm token=s.ROnC91Y3ByWDDncoZJ3YMtaY
 
-# For OVN
+# For OVN: https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/latest/app-ha.html
 juju run-action --wait vault/leader generate-root-ca
