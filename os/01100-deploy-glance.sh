@@ -11,3 +11,5 @@ juju add-relation glance:identity-service keystone:identity-service
 juju add-relation glance:amqp rabbitmq-server:amqp
 #
 juju add-relation glance:ceph ceph-mon:client
+#
+juju add-relation glance:certificates vault:certificates
