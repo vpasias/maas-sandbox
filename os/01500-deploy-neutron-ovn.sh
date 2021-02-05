@@ -19,3 +19,6 @@ juju add-relation ovn-chassis:certificates vault:certificates
 juju deploy mysql-router neutron-api-mysql-router
 juju add-relation neutron-api-mysql-router:db-router mysql-innodb-cluster:db-router
 juju add-relation neutron-api-mysql-router:shared-db neutron-api:shared-db
+#
+#https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/latest/app-ha.html
+#juju run-action --wait vault/leader generate-root-ca
