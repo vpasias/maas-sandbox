@@ -1,4 +1,4 @@
-# https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/latest/app-ha.html
+# https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/victoria/app-vault.html
 sudo snap install vault
 export VAULT_ADDR="http://192.168.10.??:8200"
 vault operator init -key-shares=5 -key-threshold=3
