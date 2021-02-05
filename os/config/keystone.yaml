@@ -4,3 +4,4 @@ keystone:
   vip: 192.168.10.231
 keystone-hacluster:
   corosync_transport: unicast
+  cluster_count: 3
