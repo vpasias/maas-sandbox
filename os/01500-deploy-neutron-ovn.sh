@@ -1,9 +1,9 @@
 #!/bin/bash
-juju deploy --config config/neutron.yaml -n 3 --to 0,1,2 cs:neutron-gateway neutron-gateway
-juju deploy --config config/neutron.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:neutron-api neutron-api
+juju deploy --config config/neutron-ovn.yaml -n 3 --to 0,1,2 cs:neutron-gateway neutron-gateway
+juju deploy --config config/neutron-ovn.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:neutron-api neutron-api
 juju deploy cs:neutron-openvswitch neutron-openvswitch
 #
-juju deploy --config config/neutron.yaml cs:hacluster neutron-hacluster
+juju deploy --config config/neutron-ovn.yaml cs:hacluster neutron-hacluster
 juju add-relation neutron-api:ha neutron-hacluster:ha
 #
 juju add-relation neutron-gateway:quantum-network-service nova-cloud-controller:quantum-network-service
