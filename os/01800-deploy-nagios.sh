@@ -21,7 +21,7 @@ juju add-relation nrpe:nrpe-external-master mysql:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master mysql-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master ncc-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master neutron-api:nrpe-external-master
-juju add-relation nrpe:nrpe-external-master neutron-gateway:nrpe-external-master
+#juju add-relation nrpe:nrpe-external-master neutron-gateway:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master neutron-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master nova-cloud-controller:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master nova-compute:nrpe-external-master
