@@ -5,6 +5,7 @@ juju add-relation keystone:ha keystone-hacluster:ha
 #
 juju add-relation keystone:shared-db mysql:shared-db
 juju add-relation keystone:identity-service cinder:identity-service
+#
 juju deploy mysql-router keystone-mysql-router
 juju add-relation keystone-mysql-router:db-router mysql-innodb-cluster:db-router
 juju add-relation keystone-mysql-router:shared-db keystone:shared-db
