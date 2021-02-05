@@ -10,3 +10,4 @@ juju add-relation vault:ha vault-hacluster:ha
 juju add-relation vault:shared-db percona-cluster:shared-db
 juju add-relation etcd:db vault:etcd
 juju add-relation etcd:certificates easyrsa:client
+# https://docs.openstack.org/project-deploy-guide/charm-deployment-guide/latest/app-ha.html
