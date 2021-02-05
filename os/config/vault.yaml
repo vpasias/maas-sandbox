@@ -7,3 +7,6 @@ mysql:
   vip: 192.168.10.241
 mysql-hacluster:
   corosync_transport: unicast
+vault-hacluster:
+  corosync_transport: unicast
+  cluster_count: 3
