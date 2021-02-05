@@ -13,3 +13,5 @@ juju add-relation nova-cloud-controller:amqp rabbitmq-server:amqp
 juju add-relation nova-cloud-controller:memcache memcached:cache
 juju add-relation nova-cloud-controller:image-service glance:image-service
 juju add-relation nova-cloud-controller:cinder-volume-service cinder:cinder-volume-service
+#
+juju add-relation nova-cloud-controller:certificates vault:certificates
