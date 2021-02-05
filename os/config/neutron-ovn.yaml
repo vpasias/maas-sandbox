@@ -1,7 +1,6 @@
 ovn-chassis:
   bridge-interface-mappings: br-ex:ens6
   ovn-bridge-mappings: physnet1:br-ex
-  openstack-origin: cloud:focal-victoria
 neutron-api:
   enable-l3ha: true
   flat-network-providers: physnet1
