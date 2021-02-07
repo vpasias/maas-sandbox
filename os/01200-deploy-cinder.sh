@@ -7,7 +7,7 @@ juju add-relation cinder:ha cinder-hacluster:ha
 juju deploy mysql-router cinder-mysql-router
 juju add-relation cinder-mysql-router:db-router mysql-innodb-cluster:db-router
 juju add-relation cinder-mysql-router:shared-db cinder:shared-db
-!
+#
 juju add-relation cinder:identity-service keystone:identity-service
 juju add-relation cinder:amqp rabbitmq-server:amqp
 #
