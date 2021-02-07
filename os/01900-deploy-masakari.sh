@@ -11,6 +11,8 @@ juju add-relation masakari-mysql-router:shared-db masakari:shared-db
 juju add-relation masakari:identity-service keystone:identity-service
 juju add-relation masakari:amqp rabbitmq-server:amqp
 #
-juju add-relation cinder:ha cinder-hacluster:ha
-
-
+juju add-relation nova-compute:juju-info masakari-monitors:container
+#
+juju add-relation keystone:identity-credentials masakari-monitors:identity-credentials
+#
+juju add-relation nova-compute:juju-info pacemaker-remote:juju-info
