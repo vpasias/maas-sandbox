@@ -5,3 +5,5 @@ juju deploy --config config/ceph-radosgw.yaml cs:hacluster ceph-radosgw-hacluste
 juju add-relation ceph-radosgw:mon ceph-mon:radosgw
 juju add-relation ceph-radosgw:ha ceph-radosgw-hacluster:ha
 juju add-relation ceph-radosgw:identity-service keystone:identity-service
+#
+juju add-relation ceph-radosgw:certificates vault:certificates
