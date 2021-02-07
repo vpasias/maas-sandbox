@@ -3,3 +3,6 @@ masakari:
   vip: 192.168.10.243
 masakari-hacluster:
   corosync_transport: unicast
+pacemaker-remote:
+  enable-stonith: True
+  enable-resources: False
