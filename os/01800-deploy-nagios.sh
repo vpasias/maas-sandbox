@@ -1,5 +1,5 @@
 #!/bin/bash
-juju deploy --config config/nagios.yaml -n 1 --to 12 cs:nagios nagios
+juju deploy --config config/nagios.yaml -n 1 --to lxd:12 cs:nagios nagios
 juju deploy --config config/nagios.yaml cs:ntp nagios-ntp
 juju deploy cs:nrpe nrpe
 juju add-relation nagios:juju-info nagios-ntp:juju-info
