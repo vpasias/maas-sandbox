@@ -1,3 +1,4 @@
+#!/bin/bash
 juju deploy charmed-kubernetes --overlay calico-overlay.yaml
 #
 sudo snap install kubectl --classic
