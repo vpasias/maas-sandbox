@@ -13,3 +13,7 @@ kubectl cluster-info
 kubectl get pods
 #
 kubectl get services
+#
+juju run-action --wait grafana/0 get-login-info
+#
+juju config kubernetes-master enable-metrics=true
