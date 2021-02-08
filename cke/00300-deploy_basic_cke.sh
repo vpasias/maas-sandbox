@@ -6,16 +6,3 @@ juju deploy charmed-kubernetes --overlay /home/vagrant/maas-sandbox/cke/calico-o
 #
 sudo snap install kubectl --classic
 sudo snap install helm --classic  
-#
-mkdir ~/.kube
-juju scp kubernetes-master/0:config ~/.kube/config
-#
-kubectl cluster-info
-#
-kubectl get pods
-#
-kubectl get services
-#
-juju run-action --wait grafana/0 get-login-info
-#
-juju config kubernetes-master enable-metrics=true
