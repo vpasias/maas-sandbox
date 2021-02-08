@@ -1,5 +1,5 @@
 #!/bin/bash
-juju deploy nagios -n 1 --to lxd:13 --series=bionic cs:nagios nagios
+juju deploy nagios -n 1 --to lxd:0 --series=bionic cs:nagios nagios
 juju deploy nrpe --series=bionic
 juju expose nagios
 #
