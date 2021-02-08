@@ -120,7 +120,9 @@ Vagrant.configure("2") do |config|
       "progress now.\n\n" \
       "Access MAAS GUI by visiting " \
       "http://localhost:5240/MAAS\n" \
-      "Username: root\nPassword: root"
+      "Username: root\nPassword: root" \
+      "MAAS_ENDPOINT_IP=" 'MAAS_IP'
+      "MAAS_API_KEY=" 'MAAS_APIKEY'
 
   end
 
