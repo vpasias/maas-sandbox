@@ -1,5 +1,8 @@
 #!/bin/bash
-juju deploy charmed-kubernetes --overlay calico-overlay.yaml
+wget https://raw.githubusercontent.com/charmed-kubernetes/bundle/master/overlays/calico-overlay.yaml
+wget https://raw.githubusercontent.com/charmed-kubernetes/bundle/master/overlays/monitoring-pgt-overlay.yaml
+#
+juju deploy charmed-kubernetes --overlay /home/vagrant/calico-overlay.yaml --overlay /home/vagrant/monitoring-pgt-overlay.yaml
 #
 sudo snap install kubectl --classic
 #
