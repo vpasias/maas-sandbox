@@ -1,7 +1,7 @@
 #!/bin/bash
-juju add-k8s k8s-cloud --controller $(juju switch | cut -d: -f1)
+juju add-k8s maas-cloud --controller $(juju switch | cut -d: -f1)
 #
-juju add-model metallb-system k8s-cloud
+juju add-model metallb-system maas-cloud
 #
 juju deploy cs:~containers/metallb
 #
