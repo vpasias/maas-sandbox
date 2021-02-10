@@ -191,4 +191,25 @@ juju add-relation nrpe:nrpe-external-master openstack-dashboard-hacluster:nrpe-e
 juju add-relation nrpe:nrpe-external-master rabbitmq-server:nrpe-external-master
 #
 sleep 10
+# deploy masakari
+juju deploy --config config/masakari.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:masakari masakari
+juju deploy --config config/masakari.yaml cs:hacluster masakari-hacluster
+juju deploy --config config/masakari.yaml cs:pacemaker-remote pacemaker-remote
+juju deploy cs:masakari-monitors masakari-monitors
 #
+juju add-relation masakari:ha masakari-hacluster:ha
+#
+juju add-relation masakari:shared-db mysql:shared-db
+#
+juju add-relation masakari:identity-service keystone:identity-service
+juju add-relation masakari:amqp rabbitmq-server:amqp
+#
+juju add-relation nova-compute:juju-info masakari-monitors:container
+#
+juju add-relation keystone:identity-credentials masakari-monitors:identity-credentials
+#
+juju add-relation nova-compute:juju-info pacemaker-remote:juju-info
+#
+juju add-relation masakari-hacluster:pacemaker-remote pacemaker-remote:pacemaker-remote
+#
+sleep 10
