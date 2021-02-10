@@ -118,7 +118,7 @@ juju add-relation placement keystone
 juju add-relation placement nova-cloud-controller
 #
 sleep 10
-#
+# deploy neutron
 juju deploy --config config/neutron.yaml -n 3 --to 0,1,2 cs:neutron-gateway neutron-gateway
 juju deploy --config config/neutron.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:neutron-api neutron-api
 juju deploy cs:neutron-openvswitch neutron-openvswitch
@@ -141,3 +141,4 @@ juju add-relation neutron-openvswitch:amqp rabbitmq-server:amqp
 juju add-relation neutron-openvswitch:neutron-plugin nova-compute:neutron-plugin
 #
 sleep 10
+#
