@@ -128,6 +128,7 @@ juju add-relation neutron-api:ha neutron-hacluster:ha
 #
 juju add-relation neutron-gateway:quantum-network-service nova-cloud-controller:quantum-network-service
 juju add-relation neutron-gateway:amqp rabbitmq-server:amqp
+#juju add-relation neutron-gateway:shared-db mysql:shared-db
 #
 juju add-relation neutron-api:shared-db mysql:shared-db
 juju add-relation neutron-api:identity-service keystone:identity-service
