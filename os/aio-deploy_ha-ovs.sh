@@ -159,7 +159,7 @@ juju add-relation ntp:juju-info neutron-gateway:juju-info
 #
 sleep 10
 # deploy nagios
-juju deploy --config config/nagios.yaml -n 1 --to 12 cs:nagios nagios
+juju deploy --config config/nagios.yaml -n 1 --to lxd:12 cs:nagios nagios
 juju deploy --config config/nagios.yaml cs:ntp nagios-ntp
 juju deploy cs:nrpe nrpe
 juju add-relation nagios:juju-info nagios-ntp:juju-info
@@ -189,3 +189,6 @@ juju add-relation nrpe:nrpe-external-master ntp:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master openstack-dashboard:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master openstack-dashboard-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master rabbitmq-server:nrpe-external-master
+#
+sleep 10
+#
