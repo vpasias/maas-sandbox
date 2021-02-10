@@ -77,4 +77,11 @@ juju add-relation cinder-ceph:storage-backend cinder:storage-backend
 juju add-relation cinder-ceph:ceph ceph-mon:client
 #
 sleep 10
+# deploy cinder backup
+juju deploy cs:~openstack-charmers/cinder-backup cinder-backup
+#
+juju add-relation cinder-backup:backup-backend cinder:backup-backend
+juju add-relation cinder-backup:ceph ceph-mon-backup:client
+#
+sleep 10
 #
