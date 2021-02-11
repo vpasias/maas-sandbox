@@ -29,8 +29,8 @@ juju deploy -n 3 --to lxd:0,lxd:1,lxd:2 cs:memcached memcached
 #
 sleep 10
 # deploy percona cluster mysql
-juju deploy --config config/pcmysql.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:percona-cluster mysql
-juju deploy --config config/pcmysql.yaml cs:hacluster mysql-hacluster
+juju deploy --config config/pcmsql.yaml -n 3 --to lxd:0,lxd:1,lxd:2 cs:percona-cluster mysql
+juju deploy --config config/pcmsql.yaml cs:hacluster mysql-hacluster
 juju add-relation mysql:ha mysql-hacluster:ha
 sleep 10
 # deploy keystone
