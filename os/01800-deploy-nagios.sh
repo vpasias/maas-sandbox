@@ -17,8 +17,8 @@ juju add-relation nrpe:nrpe-external-master glance-hacluster:nrpe-external-maste
 juju add-relation nrpe:nrpe-external-master keystone:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master keystone-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master memcached:nrpe-external-master
-juju add-relation nrpe:nrpe-external-master mysql:nrpe-external-master
-juju add-relation nrpe:nrpe-external-master mysql-hacluster:nrpe-external-master
+#juju add-relation nrpe:nrpe-external-master mysql:nrpe-external-master
+#juju add-relation nrpe:nrpe-external-master mysql-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master ncc-hacluster:nrpe-external-master
 juju add-relation nrpe:nrpe-external-master neutron-api:nrpe-external-master
 #juju add-relation nrpe:nrpe-external-master neutron-gateway:nrpe-external-master
