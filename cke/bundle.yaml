@@ -92,6 +92,20 @@ services:
       kube-proxy: 0
       kubectl: 0
       kubelet: 0
+machines:
+  "0": {}
+  "1": {}
+  "2": {}
+  "3": {}
+  "4": {}
+  "5": {}
+  "6": {}
+  "7": {}
+  "8": {}
+  "9": {}
+  "10": {}
+  "11": {}
+  "12": {}
 relations:
 - - kubernetes-master:kube-api-endpoint
   - kubeapi-load-balancer:apiserver
