@@ -2,10 +2,14 @@ applications:
   prometheus:
     charm: cs:prometheus2
     num_units: 1
+    to:
+    - lxd:0
   grafana:
     charm: cs:grafana
     expose: true
     num_units: 1
+    to:
+    - lxd:0
   telegraf:
     charm: cs:telegraf
 relations:
