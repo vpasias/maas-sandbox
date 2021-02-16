@@ -3,7 +3,7 @@ applications:
     charm: cs:apache2
     num_units: 1
     to:
-    - lxd:13
+    - lxd:0
     expose: true
     options:
       enable_modules: "headers proxy_html proxy_http"
@@ -11,7 +11,7 @@ applications:
     charm: cs:elasticsearch
     num_units: 1
     to:
-    - lxd:13
+    - lxd:1
     options:
       apt-repository: "deb https://artifacts.elastic.co/packages/6.x/apt stable main"
   filebeat:
@@ -23,14 +23,14 @@ applications:
     charm: cs:graylog
     num_units: 1
     to:
-    - lxd:13
+    - lxd:2
     options:
       channel: "3/stable"
   mongodb:
     charm: cs:mongodb
     num_units: 1
     to:
-    - lxd:13
+    - lxd:3
     options:
       extra_daemon_options: "--bind_ip_all"
 relations:
