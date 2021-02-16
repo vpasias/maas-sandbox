@@ -5,4 +5,4 @@ juju add-model metallb-system maas-cloud
 #
 juju deploy cs:~containers/metallb
 #
-juju config metallb-controller iprange="192.168.1.240-192.168.1.241"
+juju config metallb-controller iprange="192.168.10.240-192.168.10.241"
