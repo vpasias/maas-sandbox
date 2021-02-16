@@ -13,6 +13,8 @@ services:
       gui-y: '420'
     charm: cs:~containers/easyrsa-342
     num_units: 1
+    to:
+    - lxd:0
     resources:
       easyrsa: 5
   etcd:
@@ -21,6 +23,10 @@ services:
       gui-y: '420'
     charm: cs:~containers/etcd-546
     num_units: 3
+    to:
+    - lxd:1
+    - lxd:2
+    - lxd:3
     options:
       channel: 3.4/stable
     resources:
@@ -43,6 +49,8 @@ services:
     charm: cs:~containers/kubeapi-load-balancer-754
     expose: true
     num_units: 1
+    to:
+    - "4"
     resources: {}
   kubernetes-master:
     annotations:
@@ -50,6 +58,9 @@ services:
       gui-y: '850'
     charm: cs:~containers/kubernetes-master-926
     num_units: 2
+    to:
+    - lxd:1
+    - lxd:2
     options:
       channel: 1.20/stable
     resources:
@@ -67,6 +78,10 @@ services:
     charm: cs:~containers/kubernetes-worker-718
     expose: true
     num_units: 3
+    to:
+    - "5"
+    - "6"
+    - "7"    
     options:
       channel: 1.20/stable
     resources:
