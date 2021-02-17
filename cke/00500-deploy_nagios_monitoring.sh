@@ -11,6 +11,6 @@ juju add-relation nrpe etcd
 juju add-relation nrpe easyrsa
 juju add-relation nrpe kubeapi-load-balancer
 #
-juju status --format yaml nagios/0 | grep public-address
+#juju status --format yaml nagios/0 | grep public-address
 #
-juju ssh nagios/0 sudo cat /var/lib/juju/nagios.passwd
+#juju ssh nagios/0 sudo cat /var/lib/juju/nagios.passwd
