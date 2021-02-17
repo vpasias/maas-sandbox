@@ -10,4 +10,4 @@ juju add-relation ceph-fs ceph-mon
 juju add-relation ceph-mon:admin kubernetes-master
 juju add-relation ceph-mon:client kubernetes-master
 #
-kubectl get sc,po
+#kubectl get sc,po
