@@ -349,6 +349,7 @@ services:
     - lxd:2
     options:
       openstack-origin: *openstack-origin
+      vip: 192.168.10.240
   openstack-dashboard-hacluster:
     charm: cs:~openstack-charmers-next/hacluster
     options:
