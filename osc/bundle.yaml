@@ -213,7 +213,7 @@ services:
     num_units: 3
     options:
       max-connections: *mysql-connections
-      innodb-buffer-pool-size: 256M
+      innodb-buffer-pool-size: 512M
       min-cluster-size: 3
     to:
     - 'lxd:1'
@@ -268,7 +268,7 @@ services:
       gui-x: '0'
       gui-y: '0'
     charm: cs:~openstack-charmers-next/neutron-gateway
-    num_units: 1
+    num_units: 3
     options:
       openstack-origin: *openstack-origin
       bridge-mappings: physnet1:br-ex
@@ -276,6 +276,8 @@ services:
       worker-multiplier: *worker-multiplier
     to:
     - '0'
+    - '1'
+    - '2'
   neutron-openvswitch:
     annotations:
       gui-x: '250'
@@ -335,3 +337,20 @@ services:
     - 'lxd:1'
     - 'lxd:2'
     - 'lxd:3'
+  openstack-dashboard:
+    annotations:
+      gui-x: '500'
+      gui-y: '250'
+    charm: cs:~openstack-charmers-next/openstack-dashboard
+    num_units: 3
+    to:
+    - lxd:0
+    - lxd:1
+    - lxd:2
+    options:
+      openstack-origin: *openstack-origin
+  openstack-dashboard-hacluster:
+    charm: cs:~openstack-charmers-next/hacluster
+    options:
+      cluster_count: 3
+      corosync_transport: unicast
