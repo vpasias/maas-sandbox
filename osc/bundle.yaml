@@ -111,9 +111,11 @@ services:
   memcached:
     series: bionic
     charm: cs:~memcached-team/memcached
-    num_units: 1
+    num_units: 3
     to:
-    - 'lxd:0'
+    - 'lxd:1'
+    - 'lxd:2'
+    - 'lxd:3'
   ceph-mon:
     annotations:
       gui-x: '750'
@@ -326,8 +328,10 @@ services:
       gui-x: '500'
       gui-y: '250'
     charm: cs:~openstack-charmers-next/rabbitmq-server
-    num_units: 1
+    num_units: 3
     options:
       source: *openstack-origin
     to:
-    - 'lxd:0'
+    - 'lxd:1'
+    - 'lxd:2'
+    - 'lxd:3'
