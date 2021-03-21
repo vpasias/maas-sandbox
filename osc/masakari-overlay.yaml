@@ -43,6 +43,9 @@ applications:
     charm: cs:~openstack-charmers-next/masakari-monitors
   hacluster:
     charm: cs:~openstack-charmers-next/hacluster
+    options:
+      maas_url: http://192.168.10.2:5240/MAAS
+      maas_credentials: P2q5KNhwrSwgn4KeTf:bjnPsfz7wqZ4pfTFv8:H9qCq6UFEFg5RnwKVBdhFecEbnkKbtuR
   pacemaker-remote:
     charm: cs:~openstack-charmers-next/pacemaker-remote
     options:
