@@ -54,6 +54,7 @@ applications:
     num_units: 3
     options:
       openstack-origin: cloud:bionic-ussuri
+      vip: 192.168.10.245
     to:
     - 'lxd:1'
     - 'lxd:2'
