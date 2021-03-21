@@ -26,14 +26,14 @@ OAM_RESERVED_RANGE_START = OAM_NETWORK_PREFIX + "1"
 OAM_RESERVED_RANGE_END   = OAM_NETWORK_PREFIX + "9"
 
 # Total number of Cloud Nodes
-CLOUD_NODES_COUNT = 14
+CLOUD_NODES_COUNT = 5
 
 # CPU and RAM configuration for Cloud Nodes
 # Adjust the values that would fit into your host's capacity. Note that if you 
 # want to deploy e.g. OpenStack on MAAS, and then spin up VMs on OpenStack, you 
 # need to significantly bump up RAM and CPUs for Cloud Nodes.
-CLOUD_NODE_CPUS   = 4  # vCPUs per Cloud Node
-CLOUD_NODE_MEMORY = 16384  # 16GB
+CLOUD_NODE_CPUS   = 8  # vCPUs per Cloud Node
+CLOUD_NODE_MEMORY = 32768  # 32GB
 
 # Local image mirror (See https://maas.io/docs/local-image-mirror)
 LOCAL_IMAGE_MIRROR_URL = ""
