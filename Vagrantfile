@@ -86,16 +86,6 @@ Vagrant.configure("2") do |config|
       :source => './juju/credentials.yaml',
       :destination => '~vagrant/.local/share/juju/credentials.yaml'
 
-    # Provision example Ceph juju bundle
-    maas.vm.provision :file, 
-      :source => './ceph/bundle.yaml',
-      :destination => '~vagrant/ceph/bundle.yaml'
-    
-    # Provision example Openstack Cluster juju bundle
-    maas.vm.provision :file, 
-      :source => './osc/bundle.yaml',
-      :destination => '~vagrant/osc/bundle.yaml'
-
     # Install required packages
     maas.vm.provision :shell, 
       :path => './scripts/010-install-packages.sh'
