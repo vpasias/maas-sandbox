@@ -5,7 +5,7 @@ variables:
   osd-devices:         &osd-devices          /dev/sdb
   expected-osd-count:  &expected-osd-count   3
   expected-mon-count:  &expected-mon-count   3
-  mysql-connections:   &mysql-connections    20000
+  mysql-connections:   &mysql-connections    1000
 machines:
   '0':
     series: bionic
