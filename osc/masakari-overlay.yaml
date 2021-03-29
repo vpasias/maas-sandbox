@@ -1,1 +1,64 @@
-
+# Masakari
+# Please customise and add the following options:
+#  hacluster:
+#    options:
+#      maas_url: <INSERT MAAS URL>
+#      maas_credentials: <INSERT MAAS API KEY>
+#  masakari:
+#    options:
+#      vip: <INSERT VIP(S)>
+#
+# WARNING: before using this overlay, make sure `openstack-origin` here and in
+# your deployment bundle match.
+---
+machines:
+  '0':
+    series: focal
+  '1':
+    series: focal
+  '2':
+    series: focal
+  '3':
+    series: focal
+relations:
+- - nova-compute:juju-info
+  - masakari-monitors:container
+- - masakari:ha
+  - hacluster:ha
+- - keystone:identity-credentials
+  - masakari-monitors:identity-credentials
+- - nova-compute:juju-info
+  - pacemaker-remote:juju-info
+- - hacluster:pacemaker-remote
+  - pacemaker-remote:pacemaker-remote
+- - masakari:identity-service
+  - keystone:identity-service
+- - masakari:shared-db
+  - mysql:shared-db
+- - masakari:amqp
+  - rabbitmq-server:amqp
+series: focal
+applications:
+  masakari-monitors:
+    charm: cs:masakari-monitors
+  hacluster:
+    charm: cs:hacluster
+    options:
+      maas_url: http://192.168.10.2:5240/MAAS
+      maas_credentials: P2q5KNhwrSwgn4KeTf:bjnPsfz7wqZ4pfTFv8:H9qCq6UFEFg5RnwKVBdhFecEbnkKbtuR
+  pacemaker-remote:
+    charm: cs:pacemaker-remote
+    options:
+      enable-stonith: True
+      enable-resources: False
+  masakari:
+    charm: cs:masakari
+    series: focal
+    num_units: 3
+    options:
+      openstack-origin: cloud:focal-victoria
+      vip: 192.168.10.245
+    to:
+    - 'lxd:1'
+    - 'lxd:2'
+    - 'lxd:3'
