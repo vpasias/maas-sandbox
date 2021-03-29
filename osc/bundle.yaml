@@ -5,7 +5,7 @@ variables:
   osd-devices:         &osd-devices          /dev/sdb
   expected-osd-count:  &expected-osd-count   3
   expected-mon-count:  &expected-mon-count   3
-  mysql-connections:   &mysql-connections    1000
+  mysql-connections:   &mysql-connections    20000
 machines:
   '0':
     series: focal
@@ -211,7 +211,7 @@ services:
     num_units: 3
     options:
       max-connections: *mysql-connections
-      innodb-buffer-pool-size: 256M
+      innodb-buffer-pool-size: 512M
       min-cluster-size: 3
     to:
     - 'lxd:1'
