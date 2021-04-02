@@ -207,7 +207,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '250'
-    charm: cs:percona-cluster
+    charm: cs:percona-cluster-290
     num_units: 3
     options:
       max-connections: *mysql-connections
