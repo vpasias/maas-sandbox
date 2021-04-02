@@ -208,7 +208,7 @@ services:
       gui-x: '0'
       gui-y: '250'
     series: bionic
-    charm: cs:percona-cluster-290
+    charm: cs:percona-cluster
     num_units: 3
     options:
       max-connections: *mysql-connections
