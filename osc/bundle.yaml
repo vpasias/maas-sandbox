@@ -1,5 +1,5 @@
 variables:
-  openstack-origin:    &openstack-origin     cloud:focal-victoria
+  openstack-origin:    &openstack-origin     cloud:bionic-ussuri
   data-port:           &data-port            br-ex:ens6
   worker-multiplier:   &worker-multiplier    0.25
   osd-devices:         &osd-devices          /dev/sdb
@@ -8,13 +8,13 @@ variables:
   mysql-connections:   &mysql-connections    20000
 machines:
   '0':
-    series: focal
+    series: bionic
   '1':
-    series: focal
+    series: bionic
   '2':
-    series: focal
+    series: bionic
   '3':
-    series: focal
+    series: bionic
 relations:
 - - nova-compute:amqp
   - rabbitmq-server:amqp
@@ -106,7 +106,7 @@ relations:
   - mysql-hacluster:ha
 - - nova-cloud-controller:memcache
   - memcached:cache
-series: focal
+series: bionic
 services:
   memcached:
     series: focal
