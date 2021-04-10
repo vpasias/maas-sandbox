@@ -86,8 +86,6 @@ relations:
   - dashboard-mysql-router:shared-db
 - - placement:shared-db
   - placement-mysql-router:shared-db
-- - vault:shared-db
-  - vault-mysql-router:shared-db
 - - keystone-mysql-router:db-router
   - mysql-innodb-cluster:db-router
 - - cinder-mysql-router:db-router
@@ -102,6 +100,20 @@ relations:
   - mysql-innodb-cluster:db-router
 - - placement-mysql-router:db-router
   - mysql-innodb-cluster:db-router
+- - placement:ha
+  - placement-hacluster:ha
+- - keystone:ha
+  - keystone-hacluster:ha
+- - nova-cloud-controller:ha
+  - nova-cc-hacluster:ha
+- - cinder:ha
+  - cinder-hacluster:ha
+- - glance:ha
+  - glance-hacluster:ha
+- - neutron-api:ha
+  - neutron-hacluster:ha
+- - openstack-dashboard:ha
+  - openstack-dashboard-hacluster:ha
 applications:
   ceph-mon:
     annotations:
